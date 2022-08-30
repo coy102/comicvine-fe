@@ -1,6 +1,12 @@
 export const config = {
   method: 'GET',
-  url: `/movies/?api_key=ec18b0fe6ed5207389d7c5f45b12695824e373f0&format=json&limit=2&offset=0`,
+  url: `/movies`,
+  params: {
+    api_key: 'ec18b0fe6ed5207389d7c5f45b12695824e373f0',
+    format: 'json',
+    limit: 10,
+    offset: 0,
+  },
 }
 
 export const errorResponseData = {

@@ -22,7 +22,7 @@ describe('Hooks services campaign - useGetMovies', () => {
       data: loadingResponseData,
     }))
 
-    const { result } = renderHook(() => useGetMovies({ limit: 2, offset: 0 }))
+    const { result } = renderHook(() => useGetMovies({ offset: 0 }))
 
     expect(mockedUseAxios).toHaveBeenCalledWith(config)
 
@@ -36,7 +36,7 @@ describe('Hooks services campaign - useGetMovies', () => {
       data: responseData,
     }))
 
-    const { result } = renderHook(() => useGetMovies({ limit: 2, offset: 0 }))
+    const { result } = renderHook(() => useGetMovies({ offset: 0 }))
 
     expect(mockedUseAxios).toHaveBeenCalledWith(config)
 
@@ -50,7 +50,7 @@ describe('Hooks services campaign - useGetMovies', () => {
       data: errorResponseData,
     }))
 
-    const { result } = renderHook(() => useGetMovies({ limit: 2, offset: 0 }))
+    const { result } = renderHook(() => useGetMovies({ offset: 0 }))
 
     expect(mockedUseAxios).toHaveBeenCalledWith(config)
 

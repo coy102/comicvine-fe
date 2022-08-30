@@ -1,38 +1,37 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-import { MoviesParam, useGetMovies } from '~/services/hooks/movies'
+import { useGetMovies } from '~/services/hooks/movies'
+import { Movies } from '~/services/types'
 
 const useCustom = () => {
-  const [filter] = useState<MoviesParam>({
-    limit: 10,
-    offset: 0,
-  })
+  const [moviesPerPage, setMoviePerPage] = useState<Movies[]>([])
+  const [offset, setOffset] = useState(0)
 
-  const { data } = useGetMovies(filter)
+  const { data } = useGetMovies({ offset })
 
   const [search, setSearch] = useState('')
 
-  // Memo campaign list
-  const memoMovie = useMemo(() => {
-    const res = data.response
-
-    return {
-      movies: res?.results || [],
-    }
-  }, [data])
+  useEffect(() => {
+    setMoviePerPage((prev) => [...prev, ...(data?.response?.results || [])])
+  }, [data.response])
 
   // Handle change search
   const handleChangeSearch = useCallback((e) => {
     setSearch(e.target.value)
   }, [])
 
+  const handleLoadMore = useCallback(async () => {
+    setOffset(offset + 10)
+  }, [offset])
+
   return {
     data: {
-      ...memoMovie,
+      moviesPerPage,
       loading: data.loading,
       search,
     },
     methods: {
+      handleLoadMore,
       handleChangeSearch,
     },
   }

@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 
 import { Box, Grid } from '@mui/material'
+import { Waypoint } from 'react-waypoint'
 
 import CardItem from '~/components/CardItem'
 import Loading from '~/components/Loading'
@@ -8,19 +9,23 @@ import Loading from '~/components/Loading'
 import useCustom from './hooks'
 
 const Campaign = () => {
-  const { data } = useCustom()
-
-  if (data.loading) return <Loading />
+  const { data, methods } = useCustom()
 
   return (
     <Box>
-      <Grid mt={5} data-testid="movies-card-list" spacing={5} container>
-        {data.movies.map(({ id, image, name }) => (
-          <Grid xs={6} sm={6} key={id} item>
-            <CardItem coverSrc={image.small_url} title={name} />
-          </Grid>
-        ))}
-      </Grid>
+      {data.moviesPerPage.length && (
+        <Grid mt={5} data-testid="movies-card-list" spacing={5} container>
+          {data.moviesPerPage.map(({ id, image, name }, i) => (
+            <Grid xs={6} sm={6} key={id} item>
+              <CardItem coverSrc={image.small_url} title={name} />
+              {i === data.moviesPerPage.length - 1 && (
+                <Waypoint onEnter={methods.handleLoadMore} />
+              )}
+            </Grid>
+          ))}
+        </Grid>
+      )}
+      {data.loading && <Loading />}
     </Box>
   )
 }

@@ -1,4 +1,4 @@
-export interface BaseFilm {
+export interface BaseMovie {
   id: string
   movie_banner: string
   title: string
@@ -13,7 +13,7 @@ export interface BaseFilm {
   url: string
 }
 
-export type FilmsResponse = Pick<BaseFilm, 'id' | 'title' | 'movie_banner'>[]
+export type FilmsResponse = Pick<BaseMovie, 'id' | 'title' | 'movie_banner'>[]
 
 export interface Image {
   icon_url: string

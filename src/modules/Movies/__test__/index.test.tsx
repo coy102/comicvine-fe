@@ -11,18 +11,20 @@ import {
 jest.mock('~/services/useAxios', () => mockedUseAxios)
 
 describe('<Movies />', () => {
+  afterEach(jest.clearAllMocks)
+
   it('should render loading at the first time', () => {
-    mockedUseAxios.mockImplementationOnce(() => ({
+    mockedUseAxios.mockImplementation(() => ({
       axiosCallback: mockedAxiosCallback,
       data: loadingResponseData,
     }))
 
     const campaignContainer = render(<Movies />)
 
-    expect(campaignContainer.queryByTestId('loading')).toBeInTheDocument()
     expect(
       campaignContainer.queryByTestId('movies-card-list')
     ).not.toBeInTheDocument()
+    expect(campaignContainer.queryByTestId('loading')).toBeInTheDocument()
   })
 
   it('should render Movies Card List', () => {
