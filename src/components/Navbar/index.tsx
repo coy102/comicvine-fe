@@ -15,7 +15,7 @@ const StyledAppbar = styled(AppBar)({
 
 const Navbar = () => (
   <Box width="100%" display="flex" justifyContent="center">
-    <StyledAppbar position="fixed">
+    <StyledAppbar position="static">
       <Toolbar variant="dense">
         <Box py={1}>
           <StyledImage

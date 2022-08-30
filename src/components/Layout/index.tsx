@@ -19,7 +19,7 @@ const Layout = ({ children }: Props) => (
   <>
     <Navbar />
     <MobileContainer>
-      <Box mt={12}>{children}</Box>
+      <Box>{children}</Box>
     </MobileContainer>
   </>
 )

@@ -2,10 +2,11 @@ export const config = {
   method: 'GET',
   url: `/movies`,
   params: {
-    api_key: 'ec18b0fe6ed5207389d7c5f45b12695824e373f0',
+    api_key: '76b211ef760607835ac3a928ce8ba84655d56f74',
     format: 'json',
     limit: 10,
     offset: 0,
+    field_list: 'id,image,name',
   },
 }
 

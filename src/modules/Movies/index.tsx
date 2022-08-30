@@ -1,10 +1,11 @@
 import React, { memo } from 'react'
 
-import { Box, Grid } from '@mui/material'
+import { Box, Divider, Grid } from '@mui/material'
 import { Waypoint } from 'react-waypoint'
 
 import CardItem from '~/components/CardItem'
 import Loading from '~/components/Loading'
+import { fontSize } from '~/styles/theme'
 
 import useCustom from './hooks'
 
@@ -13,7 +14,11 @@ const Campaign = () => {
 
   return (
     <Box>
-      {data.moviesPerPage.length && (
+      <Box mb={2} mt={5} fontSize={fontSize[20]}>
+        Movies
+      </Box>
+      <Divider />
+      {data.moviesPerPage.length > 0 && (
         <Grid mt={5} data-testid="movies-card-list" spacing={5} container>
           {data.moviesPerPage.map(({ id, image, name }, i) => (
             <Grid xs={6} sm={6} key={id} item>
