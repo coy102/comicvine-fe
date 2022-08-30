@@ -9,16 +9,9 @@ const useCustom = () => {
 
   const { data } = useGetMovies({ offset })
 
-  const [search, setSearch] = useState('')
-
   useEffect(() => {
     setMoviePerPage((prev) => [...prev, ...(data?.response?.results || [])])
   }, [data.response])
-
-  // Handle change search
-  const handleChangeSearch = useCallback((e) => {
-    setSearch(e.target.value)
-  }, [])
 
   const handleLoadMore = useCallback(async () => {
     setOffset(offset + 10)
@@ -28,11 +21,9 @@ const useCustom = () => {
     data: {
       moviesPerPage,
       loading: data.loading,
-      search,
     },
     methods: {
       handleLoadMore,
-      handleChangeSearch,
     },
   }
 }
