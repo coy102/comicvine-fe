@@ -19,12 +19,12 @@ describe('<Movies />', () => {
       data: loadingResponseData,
     }))
 
-    const campaignContainer = render(<Movies />)
+    const movieContainer = render(<Movies />)
 
     expect(
-      campaignContainer.queryByTestId('movies-card-list')
+      movieContainer.queryByTestId('movies-card-list')
     ).not.toBeInTheDocument()
-    expect(campaignContainer.queryByTestId('loading')).toBeInTheDocument()
+    expect(movieContainer.queryByTestId('loading')).toBeInTheDocument()
   })
 
   it('should render Movies Card List', () => {
@@ -33,14 +33,13 @@ describe('<Movies />', () => {
       data: responseData,
     }))
 
-    const campaignContainer = render(<Movies />)
+    const movieContainer = render(<Movies />)
 
-    const cardContainer = campaignContainer.queryByTestId('movies-card-list')
-    const cardItemList = campaignContainer.getAllByRole('listitem')
+    const cardContainer = movieContainer.queryByTestId('movies-card-list')
+    const cardItemList = movieContainer.getAllByRole('listitem')
 
     expect(cardContainer).toBeInTheDocument()
     expect(cardItemList).toHaveLength(2)
-
-    expect(campaignContainer.queryByTestId('loading')).not.toBeInTheDocument()
+    expect(movieContainer.queryByTestId('loading')).not.toBeInTheDocument()
   })
 })
