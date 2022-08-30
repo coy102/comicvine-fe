@@ -33,8 +33,11 @@ const Campaign = () => {
       )}
       {data.loading && <Loading />}
       <FilterDrawer
+        handleChangeSearch={methods.handleChangeSearch}
+        handleClickFilter={methods.handleClickFilter}
         handleToggleDrawer={methods.handleToggleDialog}
         open={data.toggleDrawer}
+        searchValue={data.search}
       />
     </Box>
   )
