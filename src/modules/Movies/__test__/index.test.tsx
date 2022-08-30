@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
 
 import { mockedAxiosCallback, mockedUseAxios } from '~/mocks/services/useAxios'
@@ -41,5 +41,13 @@ describe('<Movies />', () => {
     expect(cardContainer).toBeInTheDocument()
     expect(cardItemList).toHaveLength(2)
     expect(movieContainer.queryByTestId('loading')).not.toBeInTheDocument()
+  })
+
+  it('should open and close FilterDrawer', async () => {
+    const movieContainer = render(<Movies />)
+    const fabDrawer = movieContainer.getByTestId('fab-filter')
+
+    fireEvent.click(fabDrawer)
+    expect(movieContainer.queryByTestId('custom-drawer')).toBeInTheDocument()
   })
 })

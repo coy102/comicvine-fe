@@ -7,6 +7,7 @@ import CardItem from '~/components/CardItem'
 import Loading from '~/components/Loading'
 import { fontSize } from '~/styles/theme'
 
+import FilterDrawer from './FilterDrawer'
 import useCustom from './hooks'
 
 const Campaign = () => {
@@ -31,6 +32,10 @@ const Campaign = () => {
         </Grid>
       )}
       {data.loading && <Loading />}
+      <FilterDrawer
+        handleToggleDrawer={methods.handleToggleDialog}
+        open={data.toggleDrawer}
+      />
     </Box>
   )
 }

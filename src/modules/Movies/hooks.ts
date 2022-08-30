@@ -6,6 +6,7 @@ import { Movies } from '~/services/types'
 const useCustom = () => {
   const [moviesPerPage, setMoviePerPage] = useState<Movies[]>([])
   const [offset, setOffset] = useState(0)
+  const [toggleDrawer, setToggleDrawer] = useState(false)
 
   const { data } = useGetMovies({ offset })
 
@@ -17,13 +18,19 @@ const useCustom = () => {
     setOffset(offset + 10)
   }, [offset])
 
+  const handleToggleDialog = useCallback(() => {
+    setToggleDrawer((prev) => !prev)
+  }, [])
+
   return {
     data: {
       moviesPerPage,
+      toggleDrawer,
       loading: data.loading,
     },
     methods: {
       handleLoadMore,
+      handleToggleDialog,
     },
   }
 }
