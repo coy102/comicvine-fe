@@ -17,8 +17,7 @@ const CardItem = ({ coverSrc, title }: Props) => (
       loader={() => coverSrc}
       src={coverSrc}
       width="100%"
-      height={200}
-      unoptimized
+      height={273}
     />
     <Tooltip title={title}>
       <Typography
