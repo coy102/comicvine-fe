@@ -18,6 +18,7 @@ const CardItem = ({ coverSrc, title }: Props) => (
       src={coverSrc}
       width="100%"
       height={273}
+      unoptimized
     />
     <Tooltip title={title}>
       <Typography

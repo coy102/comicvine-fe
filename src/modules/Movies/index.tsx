@@ -14,7 +14,7 @@ const Campaign = () => {
 
   return (
     <Box>
-      <Grid mt={5} data-testid="campaign-card-list" spacing={5} container>
+      <Grid mt={5} data-testid="movies-card-list" spacing={5} container>
         {data.movies.map(({ id, image, name }) => (
           <Grid xs={6} sm={6} key={id} item>
             <CardItem coverSrc={image.small_url} title={name} />
